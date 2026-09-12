@@ -2,6 +2,7 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
+import { Table } from 'antd';
 import './App.css'
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
       </section>
 
       <div className="ticks"></div>
+      <div>
+        <Table />
+      </div>
 
       <section id="next-steps">
         <div id="docs">
