@@ -182,3 +182,7 @@
     border-right-color: var(--border);
   }
 }
+
+.row-selected > td {
+  background-color: #11147c; /* or var(--accent-bg) */
+}

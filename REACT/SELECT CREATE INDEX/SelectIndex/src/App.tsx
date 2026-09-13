@@ -1,12 +1,22 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import { Table } from 'antd';
-import './App.css'
+import { useState } from "react";
+import heroImg from "./assets/hero.png";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import { Table } from "antd";
+import { useCustomTable } from "./hooks/UseCustomTable";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const {
+    dataSource,
+    setDataSource,
+    columns,
+    setColumns,
+    onRow,
+    selectedRowKey,
+    addNewRow
+  } = useCustomTable();
 
   return (
     <>
@@ -33,7 +43,18 @@ function App() {
 
       <div className="ticks"></div>
       <div>
-        <Table />
+        <button onClick={addNewRow}>
+          Add Row
+        </button>
+        <Table
+          dataSource={dataSource}
+          columns={columns}
+          onRow={onRow}
+          rowClassName={(record) =>
+            record.key === selectedRowKey ? "row-selected" : ""
+          }
+          
+        />
       </div>
 
       <section id="next-steps">
@@ -120,7 +141,7 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
